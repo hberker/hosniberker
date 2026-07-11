@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C — Fern · warm paper + moss, Instrument Sans</title>
+<style>
+
+@font-face{font-family:'Instrument Sans Variable';src:url('../../node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2') format('woff2-variations');font-weight:400 700;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url('../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;
+  line-height:1.65;font-feature-settings:"ss01";-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+.frame{max-width:1240px;margin:0 auto;padding:88px 56px;display:grid;
+  grid-template-columns:minmax(320px,5fr) 7fr;gap:96px}
+.side{position:sticky;top:88px;align-self:start;height:calc(100vh - 176px);
+  display:flex;flex-direction:column;justify-content:space-between;min-height:520px}
+.name{font-size:44px;font-weight:640;letter-spacing:-0.035em;line-height:1.05;
+  color:var(--ink);display:inline-block}
+.role{margin-top:14px;font-size:16px;font-weight:520;color:var(--ink)}
+.tagline{margin-top:10px;max-width:34ch;color:var(--muted);font-size:15px}
+.anchors{margin-top:56px;display:flex;flex-direction:column;gap:14px}
+.anchors a{display:flex;align-items:center;gap:12px;font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+  transition:color .18s}
+.anchors .ind{height:1px;width:20px;background:var(--faint);transition:all .18s}
+.anchors a:hover,.anchors a.active{color:var(--ink)}
+.anchors a:hover .ind,.anchors a.active .ind{width:44px;background:var(--ind-active)}
+.routes{margin-top:28px;padding-top:24px;border-top:1px solid var(--border);
+  display:flex;flex-direction:column;gap:12px}
+.routes a{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);transition:color .18s}
+.routes a:hover{color:var(--link)}
+.routes .arr{opacity:.7;margin-left:2px}
+.social{display:flex;gap:20px;align-items:center;font-size:13.5px;color:var(--muted)}
+.social a{color:var(--muted);transition:color .15s}
+.social a:hover{color:var(--link)}
+.social .loc{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint);
+  letter-spacing:.08em}
+main{display:flex;flex-direction:column;gap:88px;min-width:0}
+.overline{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:26px}
+section p + p{margin-top:16px}
+#about p{max-width:62ch;color:var(--body-text)}
+.ilink{color:var(--ink);font-weight:540;border-bottom:1px solid var(--underline);
+  transition:border-color .15s,color .15s}
+.ilink:hover{color:var(--link);border-color:var(--link)}
+.cards{display:flex;flex-direction:column;gap:16px}
+.card{border:1px solid var(--border);border-radius:12px;padding:24px 26px;
+  display:grid;grid-template-columns:112px 1fr;gap:24px;background:var(--card-bg);
+  transition:background .2s,border-color .2s,opacity .25s,transform .2s}
+.meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint);
+  text-transform:uppercase;padding-top:5px;white-space:nowrap}
+.card h3{font-size:16px;font-weight:600;letter-spacing:-0.011em;line-height:1.35}
+.tlink{transition:color .15s}
+.card .body > p{margin-top:8px;color:var(--muted);font-size:14.5px;max-width:56ch}
+.tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{font-family:var(--mono);font-size:11px;letter-spacing:.02em;
+  padding:4px 10px;border-radius:999px;transition:all .15s}
+.thumb{width:112px;height:80px;border-radius:8px;display:flex;align-items:center;
+  justify-content:center;border:1px solid var(--border)}
+.thumb svg{width:96px;height:72px}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+
+:root{--bg:#faf9f7;--ink:#201d1a;--body-text:#44403a;--muted:#57534c;--faint:#8a857c;
+  --border:#e8e4dd;--card-bg:#fffefc;--link:#39624a;--underline:#c8d4ca;
+  --ind-active:#39624a;
+  --sans:'Instrument Sans Variable',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace}
+.card:hover{border-color:#c4d2c6;transform:translateY(-2px);
+  box-shadow:0 2px 8px rgba(32,29,26,.05)}
+.card:hover .tlink{color:var(--link)}
+.tags li{background:#edf1ea;color:#3c5c47}
+.tags li:hover{background:#39624a;color:#f2f5f0}
+.thumb{color:#5f7d69;background:#f3f4ef;border-color:#e2e4da}
+
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <header class="side">
+    <div class="side-top">
+      <a class="name" href="#">Hosni&nbsp;Berker</a>
+      <p class="role">Senior Software Engineer</p>
+      <p class="tagline">I build high-throughput market-data and pricing systems at Bloomberg — now moving into its AI&nbsp;org.</p>
+      <nav class="anchors" aria-label="Sections">
+        <a class="active" href="#about"><span class="ind"></span><span>About</span></a>
+        <a href="#experience"><span class="ind"></span><span>Experience</span></a>
+        <a href="#projects"><span class="ind"></span><span>Projects</span></a>
+      </nav>
+      <nav class="routes" aria-label="Pages">
+        <a href="#">Writing <span class="arr">&rarr;</span></a>
+        <a href="#">Film <span class="arr">&rarr;</span></a>
+      </nav>
+    </div>
+    <ul class="social">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Email</a></li>
+      <li class="loc">New York, NY</li>
+    </ul>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2 class="overline">About</h2>
+      <p>I&rsquo;m a software engineer at <a class="ilink" href="#">Bloomberg</a>, where I work on the
+      market-data infrastructure behind derivatives pricing &mdash; snapshot systems that trading,
+      risk, and valuation teams depend on for consistent, reproducible numbers. I care about the
+      unglamorous parts of performance work: measuring first, caching deliberately, and deleting
+      more code than I add.</p>
+      <p>Lately my focus has been shifting toward AI &mdash; I&rsquo;m joining Bloomberg&rsquo;s AI
+      engineering group and spending my evenings on interpretability research and grad-school
+      coursework.</p>
+    </section>
+
+    <section id="experience">
+      <h2 class="overline">Experience</h2>
+      <ol class="cards">
+        <li class="card">
+          <p class="meta">2023 &mdash; Present</p>
+          <div class="body">
+            <h3><a class="tlink" href="#">Senior Software Engineer &middot; Bloomberg</a></h3>
+            <p>Build the C++ snapshot systems behind Bloomberg&rsquo;s derivatives pricing.
+            Architected a Kafka validation pipeline that cut core processing time 20%+, and
+            optimized a read-heavy DB service &mdash; 90% faster across 2.6M requests a day.</p>
+            <ul class="tags"><li>C++</li><li>Kafka</li><li>Redis</li><li>Python</li></ul>
+          </div>
+        </li>
+        <li class="card">
+          <p class="meta">Summer 2022</p>
+          <div class="body">
+            <h3><a class="tlink" href="#">Software Engineer Intern &middot; Google</a></h3>
+            <p>Shipped image-editing features for the Google Photos collage editor, integrating a
+            facial-detection ML service into the post-editing flow for a billion-user product.</p>
+            <ul class="tags"><li>Image processing</li><li>ML integration</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projects">
+      <h2 class="overline">Projects</h2>
+      <ol class="cards">
+        <li class="card">
+          <div class="thumb"><svg viewBox="0 0 96 72" fill="none" aria-hidden="true">
+<circle cx="30" cy="30" r="4" fill="currentColor" opacity=".9"/>
+<circle cx="62" cy="20" r="4" fill="currentColor" opacity=".55"/>
+<circle cx="70" cy="48" r="4" fill="currentColor" opacity=".7"/>
+<circle cx="40" cy="54" r="4" fill="currentColor" opacity=".45"/>
+<path d="M30 30L62 20M62 20L70 48M70 48L40 54M40 54L30 30M30 30L70 48" stroke="currentColor" stroke-width="1.2" opacity=".35"/>
+</svg></div>
+          <div class="body">
+            <h3><a class="tlink" href="#">Distributed Search Engine</a></h3>
+            <p>A distributed Wikipedia search engine &mdash; crawling, MapReduce inverted indexing,
+            and PageRank ranking across 6M+ documents.</p>
+            <ul class="tags"><li>Python</li><li>MapReduce</li><li>PageRank</li></ul>
+          </div>
+        </li>
+        <li class="card">
+          <div class="thumb"><svg viewBox="0 0 96 72" fill="none" aria-hidden="true">
+<rect x="22" y="14" width="52" height="10" rx="2" stroke="currentColor" stroke-width="1.4" opacity=".9"/>
+<rect x="22" y="30" width="34" height="10" rx="2" stroke="currentColor" stroke-width="1.4" opacity=".6"/>
+<rect x="62" y="30" width="12" height="10" rx="2" fill="currentColor" opacity=".5"/>
+<rect x="22" y="46" width="52" height="10" rx="2" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+</svg></div>
+          <div class="body">
+            <h3><a class="tlink" href="#">Operating System Libraries</a></h3>
+            <p>Core OS components in C++: a thread library, a virtual-memory pager, and a
+            multithreaded network file system.</p>
+            <ul class="tags"><li>C++</li><li>Concurrency</li><li>Virtual memory</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>
