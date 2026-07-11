@@ -45,6 +45,15 @@ const ogImage = new URL(withBase('/og.png'), Astro.site);
     <meta name="twitter:image" content={ogImage} />
 
     <meta name="theme-color" content="#09090b" />
+
+    <!-- GoatCounter (no-cookie page analytics). Counts only once the
+         `hberker` site code is registered at goatcounter.com; it skips
+         localhost automatically. -->
+    <script
+      is:inline
+      data-goatcounter="https://hberker.goatcounter.com/count"
+      async
+      src="https://gc.zgo.at/count.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

@@ -1,0 +1,119 @@
+---
+import { Image } from 'astro:assets';
+import Writeup from '../../layouts/Writeup.astro';
+import puzzlePieces from '../../images/cnote/puzzle-pieces.jpg';
+import signalChain from '../../images/cnote/signal-chain.png';
+
+const links = [
+  { label: 'GitHub', href: 'https://github.com/Jableman19/CNote' },
+  { label: 'Demo video', href: 'https://www.youtube.com/watch?v=ISGjMeqMMFM' },
+  { label: 'Product site', href: 'https://piyawatm.wixsite.com/c-note' },
+];
+---
+
+<Writeup
+  title="C-Note"
+  description="An augmented-reality app that teaches music students sound design through physical puzzle pieces — turning abstract audio concepts into hands-on play."
+  meta="2023 · AR/VR Capstone · University of Michigan"
+  tags={['Unity', 'C#', 'AR', 'DSP']}
+  links={links}
+>
+  <p>
+    Sound design is everywhere in the media we consume, but the barriers to entry are steep. An
+    entry-level synthesizer costs upwards of $300, and even then, learning to coax a sound out of an
+    array of unlabeled buttons and knobs is unintuitive at best — discouraging at worst, especially
+    for a kid encountering the subject for the first time.
+  </p>
+  <p>
+    For our AR/VR capstone, our team built <strong>C-Note</strong>: a cheap, simple, and tactile
+    sound-design environment aimed at middle-school students. Instead of knobs, students get a set
+    of physical puzzle pieces, each representing a way to create or modify sound — an oscillator, a
+    filter, an effect.
+  </p>
+
+  <figure>
+    <Image
+      src={puzzlePieces}
+      widths={[480, 720, 1080]}
+      sizes="(max-width: 720px) 94vw, 656px"
+      alt="A set of C-Note's colorful physical puzzle pieces laid out on a table, each printed with an audio-effect symbol"
+      format="webp"
+    />
+    <figcaption>The array of audio-effect puzzle pieces.</figcaption>
+  </figure>
+
+  <p>
+    Snap pieces together into a chain, point an iOS device at it, and the app interprets the chain
+    in real time — reading the pieces left to right like a signal path and converting them into a
+    live audio signal. Creations can be saved and played back through the
+    app's <strong>songbook</strong> feature, so a class can collect and revisit what they've
+    built.
+  </p>
+
+  <figure>
+    <Image
+      src={signalChain}
+      widths={[480, 720, 1080]}
+      sizes="(max-width: 720px) 94vw, 656px"
+      alt="Diagram showing puzzle pieces composing into an audio signal chain, interpreted left to right"
+      format="webp"
+    />
+    <figcaption>Audio effects are interpreted left to right, like a signal chain.</figcaption>
+  </figure>
+
+  <h2>What it taught me</h2>
+  <ul>
+    <li>
+      <strong>Digital signal processing</strong> — building the effect chain meant understanding how
+      oscillators, envelopes, and filters actually compose, not just how to patch them.
+    </li>
+    <li>
+      <strong>The MIDI system</strong> — mapping physical arrangements to musical events in real
+      time.
+    </li>
+    <li>
+      <strong>Product design and playtesting</strong> — our target users were middle-schoolers, so
+      every interaction had to survive contact with actual kids. Watching a playtest fall apart is a
+      faster teacher than any spec review.
+    </li>
+  </ul>
+
+  <p>
+    The app is built in <strong>Unity (C#)</strong>, using image tracking to recognize the pieces
+    and custom shaders for the AR overlay.
+    The <a
+      class="ilink"
+      href="https://www.youtube.com/watch?v=ISGjMeqMMFM"
+      target="_blank"
+      rel="noopener noreferrer">demo video</a
+    > shows the full loop — assembling a chain, scanning it, and hearing the result.
+  </p>
+
+  <p class="credit mono-meta">
+    Photos and portions of this write-up adapted from
+    teammate <a
+      href="https://behrmanz.github.io/projects/7_project/"
+      target="_blank"
+      rel="noopener noreferrer">Zach Behrman's project page</a
+    >.
+  </p>
+</Writeup>
+
+<style>
+  .credit {
+    margin-top: 1.5rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+  }
+
+  .credit a {
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s var(--ease);
+  }
+
+  .credit a:hover {
+    color: var(--accent);
+  }
+</style>

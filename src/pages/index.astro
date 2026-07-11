@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import Tags from '../components/Tags.astro';
 import ProjectThumb from '../components/ProjectThumb.astro';
@@ -124,11 +125,16 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
         <ol class="cards">
           {
             projects.map((project) => (
-              <li class:list={['card', { linked: Boolean(project.url) }]}>
+              <li class:list={['card', { linked: Boolean(project.writeup ?? project.url) }]}>
                 <ProjectThumb kind={project.thumb} />
                 <div>
                   <h3>
-                    {project.url ? (
+                    {project.writeup ? (
+                      <a class="card-title-link" href={withBase(project.writeup)}>
+                        {project.title}<span class="ext ext-in" aria-hidden="true">&rarr;</span>
+                        <span class="sr-only">(read the write-up)</span>
+                      </a>
+                    ) : project.url ? (
                       <a class="card-title-link" href={project.url} target="_blank" rel="noopener noreferrer">
                         {project.title}<span class="ext" aria-hidden="true">&#8599;</span>
                         <span class="sr-only">(opens GitHub repository in a new tab)</span>
@@ -146,11 +152,7 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
         </ol>
       </section>
 
-      <footer class="colophon">
-        <p class="mono-meta">
-          Designed &amp; built by {site.name} · Astro + GitHub Pages · Typeset in Inter
-        </p>
-      </footer>
+      <Footer />
     </main>
   </div>
 </Base>
@@ -320,15 +322,6 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
 
   #about p + p {
     margin-top: 1rem;
-  }
-
-  .colophon {
-    padding-top: 0.5rem;
-  }
-
-  .colophon .mono-meta {
-    text-transform: none;
-    letter-spacing: 0.04em;
   }
 
   /* ---------------------------------------------------------- responsive */

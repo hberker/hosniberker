@@ -5,6 +5,8 @@ export interface Project {
   /** key into the ProjectThumb SVG set */
   thumb: 'wispr' | 'guitar' | 'search' | 'os' | 'quantum' | 'cnote';
   url?: string;
+  /** internal write-up route (takes precedence over url as the card target) */
+  writeup?: string;
 }
 
 export const projects: Project[] = [
@@ -15,6 +17,7 @@ export const projects: Project[] = [
     tags: ['Python', 'Whisper', 'Local LLMs', 'Electron'],
     thumb: 'wispr',
     url: 'https://github.com/hberker/WisprFree',
+    writeup: '/projects/wisprfree/',
   },
   {
     title: 'Guitar Trainer',
@@ -23,6 +26,7 @@ export const projects: Project[] = [
     tags: ['JavaScript', 'Web Audio', 'DSP'],
     thumb: 'guitar',
     url: 'https://github.com/hberker/guitar-app',
+    writeup: '/projects/guitar-trainer/',
   },
   {
     title: 'Distributed Search Engine',
@@ -52,5 +56,6 @@ export const projects: Project[] = [
     tags: ['Unity', 'C#', 'AR'],
     thumb: 'cnote',
     url: 'https://github.com/Jableman19/CNote',
+    writeup: '/projects/cnote/',
   },
 ];

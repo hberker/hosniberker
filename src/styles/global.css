@@ -260,6 +260,12 @@ button {
   transform: translate(2px, -2px);
 }
 
+/* internal links nudge sideways instead of up-and-out */
+.card.linked:hover .ext-in,
+.card.linked:focus-within .ext-in {
+  transform: translateX(3px);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
