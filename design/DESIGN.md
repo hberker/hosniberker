@@ -90,3 +90,33 @@ structure and content order untouched and changes two things:
 
 Everything else — fonts, metric-adjusted fallbacks, layout grid,
 scroll-spy, lightbox — carries over unchanged.
+
+## v3 — write-ups, the light table, and a footer (July 2026)
+
+Three additions, no theme changes:
+
+- **Project write-ups** — projects with real source material (C-Note,
+  WisprFree, Guitar Trainer) gained long-form pages under `/projects/…`,
+  rendered through a shared `Writeup` layout (breadcrumb, mono meta line,
+  tag chips, external-link row, measure-limited prose). On the home list an
+  entry with a write-up links internally and its indicator is a `→` that
+  nudges sideways, while external-only entries keep the `↗`. The C-Note
+  page adapts (with credit and a link) teammate Zach Behrman's write-up and
+  photos.
+- **Film as a light table** — the masonry grid became cut strips of
+  negatives: film-base panels with punched sprocket rows, amber edge
+  markings (`HB 135 · ROLL 01`, frame numbers), and thumbnails shown
+  inverted with the orange mask of colour negative stock. Hovering a frame
+  "develops" it to a positive; clicking puts it on the light table — a
+  full-screen tape of frames that slides horizontally across a glowing
+  panel, Lightroom-filmstrip style. The viewer auto-advances every 5s with
+  a visible pause control (WCAG 2.2.2), skips auto-play entirely under
+  `prefers-reduced-motion`, lazy-loads only the current frame ± 1, and
+  keeps the keyboard/focus behaviour of the old lightbox.
+- **Colophon + analytics** — a shared footer (built-with + source link) on
+  every page, and GoatCounter (no-cookie) wired site-wide, pending the
+  `hberker` site-code registration.
+
+Verified: axe-core clean on home, film (gallery and open viewer), and
+write-up pages; auto-advance/pause/reduced-motion behaviour asserted in
+headless Chromium; no horizontal overflow at 390px.

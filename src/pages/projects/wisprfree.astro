@@ -1,0 +1,69 @@
+---
+import Writeup from '../../layouts/Writeup.astro';
+
+const links = [{ label: 'GitHub', href: 'https://github.com/hberker/WisprFree' }];
+---
+
+<Writeup
+  title="WisprFree"
+  description="A privacy-first voice-dictation tool that runs entirely offline — Whisper transcription cleaned up by a local LLM, with a personal dictionary, per-app tone profiles, and fine-tuning on your own corrections."
+  meta="Personal project · In active development"
+  tags={['Python', 'Whisper', 'Local LLMs', 'Electron', 'FastAPI']}
+  links={links}
+>
+  <p>
+    Every good dictation tool I tried wanted my audio in someone else's cloud. WisprFree is my
+    answer: press a hotkey anywhere in the OS, talk, and clean text appears at your cursor —
+    with nothing ever leaving the machine. No accounts, no telemetry, and the API daemon binds to
+    localhost only.
+  </p>
+
+  <h2>Two-stage pipeline</h2>
+  <p>
+    Raw speech-to-text output is rarely what you meant to write. WisprFree splits the problem in
+    two:
+  </p>
+  <ul>
+    <li>
+      <strong>Transcribe.</strong> Whisper (via faster-whisper or whisper.cpp) converts audio to
+      text, seeded with a personal dictionary so names, jargon, and acronyms come out right the
+      first time.
+    </li>
+    <li>
+      <strong>Refine.</strong> A local LLM served by Ollama strips filler words, fixes grammar,
+      resolves mid-sentence self-corrections ("send it Tuesday — no, Wednesday"), and adapts tone to
+      the app you're dictating into.
+    </li>
+  </ul>
+
+  <h2>The parts I'm proud of</h2>
+  <ul>
+    <li>
+      <strong>Personal dictionary</strong> — a SQLite store of your vocabulary that biases both
+      stages. When the same correction keeps happening, WisprFree notices and suggests adding the
+      term.
+    </li>
+    <li>
+      <strong>Context awareness</strong> — it detects the active application (AppKit on macOS, Win32
+      on Windows, X11/Hyprland/Sway on Linux) and switches between casual, formal, and technical
+      tone profiles accordingly. Slack-you and email-you are different people.
+    </li>
+    <li>
+      <strong>It learns your voice</strong> — corrections are logged locally and can be used to
+      LoRA-fine-tune both stages: the cleanup model from your correction history, and Whisper itself
+      from recordings of you reading phonetically balanced sentences, with a held-out set to report
+      the actual word-error-rate improvement.
+    </li>
+    <li>
+      <strong>OS-native text injection</strong> — CGEvent on macOS, SendInput on Windows,
+      xdotool/wtype on Linux, so it works in any app, not just a browser extension's sandbox.
+    </li>
+  </ul>
+
+  <p>
+    The system runs as a Python daemon (FastAPI) with an Electron menu-bar app on top for settings,
+    dictionary editing, tone profiles, and correction history. Voice activity detection trims
+    silence before transcription; dictation audio lives only in memory unless you're intentionally
+    recording training data.
+  </p>
+</Writeup>

@@ -13,13 +13,16 @@ JavaScript shipped is a scroll-spy on the homepage and the film-page lightbox.
 | Page       | Route       | Source                                        |
 | ---------- | ----------- | --------------------------------------------- |
 | Home       | `/`         | `src/pages/index.astro` — About → Experience → Projects as one scrolling page |
-| Film       | `/film/`    | `src/pages/film.astro` — auto-built from images in `src/photos/` |
+| Film       | `/film/`    | `src/pages/film.astro` — auto-built from images in `src/photos/`, presented as negatives on a light table |
+| Write-ups  | `/projects/…/` | `src/pages/projects/*.astro` — long-form project pages (shared shell: `src/layouts/Writeup.astro`) |
 
 ## Updating content
 
 - **Intro / contact** — `src/data/site.ts`
 - **Experience & education** — `src/data/experience.ts` (date, role, 2–3 sentence description, tags)
-- **Projects** — `src/data/projects.ts`
+- **Projects** — `src/data/projects.ts`. A project with a `writeup` path gets
+  an internal detail page (add one under `src/pages/projects/` using the
+  `Writeup` layout); otherwise `url` is used as an external link.
 - **Photos** — drop image files into `src/photos/` (see
   [`src/photos/README.md`](src/photos/README.md)). The current images are
   generated placeholders; delete them when real photos land.
@@ -43,6 +46,14 @@ publishes it with `actions/deploy-pages`.
 
 **One-time setup:** in the repo settings → *Pages*, set **Source** to
 **GitHub Actions** (first workflow run may prompt this automatically).
+
+### Analytics
+
+Every page loads [GoatCounter](https://www.goatcounter.com/) (free,
+no-cookie page analytics). Pageviews start recording once the `hberker`
+site code is claimed: sign up at goatcounter.com with code **hberker**
+(matching the `data-goatcounter` URL in `src/layouts/Base.astro`). Until
+then the script is a silent no-op for visitors.
 
 ### Hosting modes
 

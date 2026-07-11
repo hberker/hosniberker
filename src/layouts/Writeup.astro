@@ -1,0 +1,193 @@
+---
+import Base from './Base.astro';
+import TopNav from '../components/TopNav.astro';
+import Footer from '../components/Footer.astro';
+import Tags from '../components/Tags.astro';
+import { withBase } from '../lib/url';
+
+interface Link {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  meta: string;
+  tags: string[];
+  links: Link[];
+}
+
+const { title, description, meta, tags, links } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <TopNav />
+  <main id="main" class="page">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href={`${withBase('/')}#projects`}
+        ><span aria-hidden="true">&larr;</span> All projects</a
+      >
+    </nav>
+
+    <header class="head">
+      <p class="mono-meta">{meta}</p>
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+      <Tags tags={tags} />
+      {
+        links.length > 0 && (
+          <ul class="links">
+            {links.map(({ label, href }) => (
+              <li>
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  {label} <span aria-hidden="true">&#8599;</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <article class="prose">
+      <slot />
+    </article>
+
+    <Footer />
+  </main>
+</Base>
+
+<style>
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2.25rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .crumb a {
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 13px 8px;
+    margin: -13px -8px;
+    transition: color 0.15s var(--ease);
+  }
+
+  .crumb a:hover {
+    color: var(--accent);
+  }
+
+  .head h1 {
+    margin-top: 0.9rem;
+    font-size: 1.75rem;
+    font-weight: 640;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  .head .lede {
+    margin-top: 0.8rem;
+    color: var(--muted);
+    max-width: 58ch;
+  }
+
+  .head :global(.tags) {
+    margin-top: 1.1rem;
+  }
+
+  .links {
+    margin-top: 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .links a {
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 12px 6px;
+    margin: -12px -6px;
+    transition: color 0.15s var(--ease);
+  }
+
+  .links a:hover {
+    color: var(--accent);
+  }
+
+  /* --------------------------------------------------------------- prose */
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    color: var(--body);
+  }
+
+  .prose :global(h2) {
+    margin-top: 1.4rem;
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .prose :global(strong) {
+    color: var(--ink);
+    font-weight: 560;
+  }
+
+  .prose :global(ul) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding-left: 1.1rem;
+  }
+
+  .prose :global(ul li) {
+    list-style: none;
+    position: relative;
+  }
+
+  .prose :global(ul li)::before {
+    content: '—';
+    position: absolute;
+    left: -1.1rem;
+    color: var(--faint);
+  }
+
+  .prose :global(figure) {
+    margin: 0.9rem 0;
+  }
+
+  .prose :global(figure img) {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    width: 100%;
+    height: auto;
+  }
+
+  .prose :global(figcaption) {
+    margin-top: 0.7rem;
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.06em;
+    color: var(--faint);
+  }
+
+  @media (max-width: 640px) {
+    .page {
+      padding: 2.75rem 1.4rem 3.5rem;
+      gap: 2.25rem;
+    }
+  }
+</style>

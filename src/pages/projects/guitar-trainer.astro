@@ -1,0 +1,62 @@
+---
+import Writeup from '../../layouts/Writeup.astro';
+
+const links = [{ label: 'GitHub', href: 'https://github.com/hberker/guitar-app' }];
+---
+
+<Writeup
+  title="Guitar Trainer"
+  description="A dependency-free fretboard trainer that listens through the mic: autocorrelation pitch detection accurate to ~1 cent, a Karplus-Strong synth, and six practice modes with rhythm scoring."
+  meta="Personal project · In active development"
+  tags={['JavaScript', 'Web Audio', 'DSP']}
+  links={links}
+>
+  <p>
+    Fretboard drills only work if something is actually checking you. Guitar Trainer listens through
+    the microphone, hears which note you played, and advances automatically when you're right — no
+    clicking between reps, no taking your hands off the guitar. It's a single static page: no
+    frameworks, no libraries, no server.
+  </p>
+
+  <h2>The listening part</h2>
+  <ul>
+    <li>
+      <strong>Pitch detection</strong> — autocorrelation with parabolic interpolation, written in
+      plain JavaScript against the Web Audio API, accurate to about one cent across the guitar's
+      range. A live tuner shows the cents meter and signal strength.
+    </li>
+    <li>
+      <strong>Sound synthesis</strong> — prompts and ear-training tones are generated with
+      Karplus-Strong plucked-string synthesis, so the app sounds like a guitar instead of a sine
+      beep. It also self-mutes while playing so it doesn't detect its own output.
+    </li>
+  </ul>
+
+  <h2>Six practice modes</h2>
+  <ul>
+    <li>
+      <strong>Single notes</strong> — find a named note on a named string against the clock; a focus
+      mode weights the drill toward your historically slowest positions.
+    </li>
+    <li>
+      <strong>Scale runs</strong> — major, minor, pentatonics, blues, and arpeggios from a given
+      position, optionally against a metronome with on-beat scoring.
+    </li>
+    <li><strong>Ear training</strong> — hunt a played pitch by ear, with difficulty tiers from "reference tone + string name" to "any octave, no hints." Miss patterns are logged by interval.</li>
+    <li><strong>Call &amp; response</strong> — transcribe 2–5 note phrases back note-for-note.</li>
+    <li>
+      <strong>Bends &amp; holds</strong> — bend to a target pitch or hold a note within ±20 cents
+      for three seconds; pure intonation training.
+    </li>
+    <li>
+      <strong>Daily workout</strong> — a fixed circuit chaining the other modes, with a summary
+      comparing today against previous sessions.
+    </li>
+  </ul>
+
+  <p>
+    Everything persists to local storage — response times, mistakes, per-string averages, miss
+    patterns — and renders as a <strong>fretboard heatmap</strong> of average find-times by
+    position, so the neck itself shows you what to practice next.
+  </p>
+</Writeup>

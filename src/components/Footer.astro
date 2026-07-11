@@ -1,0 +1,34 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="colophon">
+  <p class="mono-meta">
+    Designed &amp; built by {site.name} · Astro + GitHub Pages
+    · <a href="https://github.com/hberker/hosniberker" target="_blank" rel="noopener noreferrer"
+      >Source <span aria-hidden="true">&#8599;</span></a
+    >
+  </p>
+</footer>
+
+<style>
+  .colophon {
+    padding-top: 0.5rem;
+  }
+
+  .colophon .mono-meta {
+    text-transform: none;
+    letter-spacing: 0.04em;
+  }
+
+  .colophon a {
+    color: var(--faint);
+    padding: 10px 4px;
+    margin: -10px -4px;
+    transition: color 0.15s var(--ease);
+  }
+
+  .colophon a:hover {
+    color: var(--accent);
+  }
+</style>
