@@ -1,0 +1,79 @@
+---
+import { site } from '../data/site';
+import { withBase } from '../lib/url';
+
+interface Props {
+  current?: 'writing' | 'film';
+}
+
+const { current } = Astro.props;
+
+const links = [
+  { label: 'Writing', href: withBase('/writing/'), key: 'writing' },
+  { label: 'Film', href: withBase('/film/'), key: 'film' },
+];
+---
+
+<header class="topnav">
+  <a class="home" href={withBase('/')}>{site.name}</a>
+  <nav aria-label="Pages">
+    {
+      links.map(({ label, href, key }) => (
+        <a href={href} aria-current={current === key ? 'page' : undefined}>
+          {label}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<style>
+  .topnav {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 2.25rem 3.5rem 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .home {
+    font-weight: 620;
+    letter-spacing: -0.02em;
+    font-size: 1.05rem;
+    transition: color 0.15s var(--ease);
+  }
+
+  .home:hover {
+    color: var(--accent);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  nav a {
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    transition: color 0.15s var(--ease);
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    .topnav {
+      padding: 1.5rem 1.4rem 0;
+    }
+  }
+</style>
