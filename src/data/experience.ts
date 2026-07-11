@@ -14,8 +14,8 @@ export const experience: Experience[] = [
     org: 'Bloomberg',
     url: 'https://www.bloomberg.com/company/',
     description:
-      'Build the C++ snapshot systems behind Bloomberg’s derivatives pricing — data that trading, risk, and valuation teams rely on to agree on the same numbers. Architected a Kafka validation pipeline (20%+ faster core processing across ~10k daily snapshots) and cut a read-heavy database service’s response times by 90% at 2.6M requests a day. Lead a company-wide testing initiative, including an internal RAG agent that helps engineers fix failing builds.',
-    tags: ['C++', 'Kafka', 'Redis', 'Python', 'Docker'],
+      'Train, fine-tune, and deploy the policy models behind Bloomberg’s AI surveillance — classifiers that flag insider trading, collusion, personal trading, excessive gifting, and deception. Own much of the data lifecycle around them: human-in-the-loop annotation pipelines, deattribution of sensitive data, and the evaluation datasets that gate what ships. Spent the first years here on the C++ snapshot systems behind derivatives pricing, including a 90% response-time cut on a service handling 2.6M requests a day.',
+    tags: ['Python', 'Fine-tuning', 'Human-in-the-loop', 'Evals', 'C++'],
   },
   {
     meta: 'Summer 2022',
