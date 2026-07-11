@@ -563,23 +563,47 @@ const frameNo = (i: number) => String(i + 1).padStart(2, '0');
       --gap: 0.7rem;
     }
 
-    .cell img {
-      height: min(58vh, 700px);
+    /* the frame owns the top of the screen; everything else stacks
+       centered underneath it */
+    .table {
+      align-items: flex-start;
     }
 
-    .lb-prev,
-    .lb-next {
-      top: auto;
-      bottom: 1.25rem;
+    .glow {
+      top: calc(2.4rem + 28vh);
+      height: min(64vh, 820px);
+    }
+
+    .cell img {
+      height: min(56vh, 700px);
+    }
+
+    .caption {
+      bottom: auto;
+      top: calc(56vh + 6.6rem);
+    }
+
+    .lb-btn {
+      top: calc(56vh + 9rem);
+      bottom: auto;
+      right: auto;
       translate: none;
     }
 
     .lb-prev {
-      left: 1.25rem;
+      left: calc(50% - 109px);
+    }
+
+    .lb-play {
+      left: calc(50% - 51px);
     }
 
     .lb-next {
-      right: 1.25rem;
+      left: calc(50% + 7px);
+    }
+
+    .lb-close {
+      left: calc(50% + 65px);
     }
   }
 </style>
