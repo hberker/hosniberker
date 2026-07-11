@@ -60,3 +60,33 @@ after `npm install` (they load fonts from `node_modules`):
 
 Verified: Lighthouse 100/100/100/100 (home and film), axe-core clean on all
 four pages, responsive from 390px up.
+
+## v2 — dark, borderless (July 2026)
+
+After living with the shipped light version, the direction changed on
+explicit feedback: the bordered white cards read as "clunky boxes," and a
+dark ground was what was wanted all along — specifically leerob.com's dark
+mode, with brittanychiang.com's invisible-card interaction. v2 keeps the
+structure and content order untouched and changes two things:
+
+- **Theme** — leerob.com's dark mode, verified against his `layout.tsx`
+  (`Inter` from `next/font/google`, `dark:bg-zinc-950`,
+  `dark:text-zinc-200`, body `tracking-tight`): near-black zinc ground
+  (`#09090b`) with a zinc text scale (`#e4e4e7` ink, `#a1a1aa` body,
+  `#82828c` meta — a tone between zinc-400/500 so small mono text keeps
+  AA) and one blue accent (`#60a5fa`), kept scarce leerob-style: hover
+  titles, inline-link hovers, focus rings. Tags are neutral zinc chips.
+  Body tracking tightened to `-0.025em` to match his texture.
+  `color-scheme: dark` so UA chrome (scrollbars, form controls) follows.
+- **Entries instead of cards** — the border/background/padding box is
+  gone; entries are plain text in the page flow (date column + content).
+  On hover, a linked entry reveals a translucent zinc wash that bleeds
+  ~1rem past the text edges (Chiang's negative-inset treatment — the page
+  highlights, not a box), the title tints to the accent, the ↗ nudges, and
+  siblings dim. The whole entry is one click target to the external site,
+  via a stretched pseudo-element sized to match the wash exactly. Entries
+  without a URL get no wash and no pointer. Gated behind `hover: hover`;
+  `:focus-within` shows the wash for keyboard users unconditionally.
+
+Everything else — fonts, metric-adjusted fallbacks, layout grid,
+scroll-spy, lightbox — carries over unchanged.

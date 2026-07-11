@@ -83,7 +83,7 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
         <ol class="cards">
           {
             experience.map((job) => (
-              <li class="card">
+              <li class:list={['card', { linked: Boolean(job.url) }]}>
                 <p class="meta mono-meta">{job.meta}</p>
                 <div>
                   <h3>
@@ -104,7 +104,7 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
               </li>
             ))
           }
-          <li class="card">
+          <li class="card linked">
             <p class="meta mono-meta">{education.meta}</p>
             <div>
               <h3>
@@ -124,7 +124,7 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
         <ol class="cards">
           {
             projects.map((project) => (
-              <li class="card">
+              <li class:list={['card', { linked: Boolean(project.url) }]}>
                 <ProjectThumb kind={project.thumb} />
                 <div>
                   <h3>
@@ -261,7 +261,7 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
   .anchors a:hover .ind,
   .anchors a.active .ind {
     width: 44px;
-    background: var(--accent);
+    background: var(--ink);
   }
 
   .routes {
@@ -291,7 +291,6 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
   }
 
   .routes .arr {
-    opacity: 0.7;
     margin-left: 2px;
   }
 
@@ -311,7 +310,7 @@ const routes = [{ label: 'Film', href: withBase('/film/') }];
   }
 
   section .overline {
-    margin-bottom: 1.6rem;
+    margin-bottom: 2rem;
   }
 
   #about p {

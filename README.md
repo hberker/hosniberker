@@ -1,7 +1,7 @@
 # hberker.github.io — personal portfolio
 
 Portfolio site for **Hosni Berker** — built with [Astro](https://astro.build),
-deployed to GitHub Pages. Light, fast, no client-side framework: the only
+deployed to GitHub Pages. Dark, fast, no client-side framework: the only
 JavaScript shipped is a scroll-spy on the homepage and the film-page lightbox.
 
 **Live URL:** `https://hberker.github.io/hosniberker/`
