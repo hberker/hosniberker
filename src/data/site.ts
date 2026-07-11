@@ -2,7 +2,7 @@ export const site = {
   name: 'Hosni Berker',
   role: 'Senior Software Engineer',
   tagline:
-    'I train and ship the models that catch market abuse at Bloomberg — insider trading, collusion, deception.',
+    'I train and ship the models that catch market abuse at Bloomberg — behavior like insider trading, collusion, deception.',
   location: 'New York, NY',
   email: 'hosni.berker@gmail.com',
   github: 'https://github.com/hberker',
