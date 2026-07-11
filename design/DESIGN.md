@@ -11,8 +11,9 @@ Blend two references without cloning either:
 - **Style** from [leerob.com](https://leerob.com) — light, low-color,
   typographically restrained; the opposite of Chiang's dark navy/teal.
 
-Hybrid navigation: Home holds the three sections as anchors; **Writing** and
-**Film** are real routes with their own nav links.
+Hybrid navigation: Home holds the three sections as anchors; **Film** is a
+real route with its own nav link. (An earlier Writing route was removed —
+no blog planned.)
 
 Explicitly avoided (the "generic AI portfolio" defaults): warm cream +
 high-contrast serif + terracotta accent; near-black + single neon accent;
@@ -32,15 +33,21 @@ after `npm install` (they load fonts from `node_modules`):
 
 ## The shipped system
 
-- **Palette** — zinc neutrals with a single desaturated steel-blue accent
-  (`#2e5678`), used only where it carries meaning: links, active nav
-  indicator, tag pills, focus rings. Cards are white on `#fafafa` with 1px
-  `#e4e4e7` borders. No gradients, no shadows beyond a 1px-blur lift on
-  hover.
-- **Type** — Geist (sans) + Geist Mono, self-hosted via Fontsource. One
-  family voice: display weight 640 with tight tracking for the name; mono
-  smallcaps for all metadata (dates, section overlines, nav, tags).
-  Fittingly, Geist is the typeface of leerob's world (Vercel).
+- **Palette** — pure white ground with a Tailwind-gray text scale
+  (`#111827` ink, `#6b7280` faint) and a single blue accent (`#2563eb`),
+  used only where it carries meaning: links, active nav indicator, focus
+  rings, hover states. Cards are bordered boxes (1px `#e5e7eb`) on white.
+  No gradients, no shadows beyond a subtle lift on hover. These values
+  were verified against leerob.com's implementation after the initial
+  zinc/steel-blue version shipped.
+- **Type** — Inter (sans) + Geist Mono, self-hosted via Fontsource.
+  Display weight 640 with tight tracking for the name; mono smallcaps for
+  all metadata (dates, section overlines, nav, tags). Inter was chosen
+  after verifying leerob.com's actual implementation — his `layout.tsx`
+  imports Inter from `next/font/google` over `bg-white text-gray-900`
+  with a blue interaction accent, so the shipped tokens mirror that
+  (white ground, Tailwind-gray scale, blue-600 accent) rather than the
+  earlier zinc/steel-blue approximation.
 - **Signature interaction** (one, executed well): hovering an
   Experience/Projects list gently dims sibling cards while the hovered card
   gains the accent border and an ↗ nudge — Chiang's spotlight, translated to

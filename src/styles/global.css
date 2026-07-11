@@ -1,13 +1,14 @@
 /* -------------------------------------------------------- fallback fonts */
-/* Metric-adjusted fallbacks so the swap to Geist doesn't shift layout.
-   Overrides derived from the actual font metrics (ascent 1005/1000,
-   descent 295/1000) and an empirically measured width ratio vs Arial. */
+/* Metric-adjusted fallbacks so the swap to the web fonts doesn't shift
+   layout. Overrides derived from the actual font metrics (Inter: ascent
+   1984/2048, descent 494/2048) and an empirically measured width ratio
+   vs the local fallback. */
 @font-face {
-  font-family: 'Geist Fallback';
+  font-family: 'Inter Fallback';
   src: local('Arial');
-  size-adjust: 103.05%;
-  ascent-override: 97.53%;
-  descent-override: 28.63%;
+  size-adjust: 107.2%;
+  ascent-override: 90.37%;
+  descent-override: 22.5%;
   line-gap-override: 0%;
 }
 
@@ -22,25 +23,26 @@
 
 /* ------------------------------------------------------------------ tokens */
 :root {
-  /* palette — "steel": zinc neutrals with one desaturated steel-blue accent */
-  --bg: #fafafa;
+  /* palette — verified against leerob.com: pure white ground, gray scale
+     (Tailwind gray family), blue as the only accent */
+  --bg: #ffffff;
   --surface: #ffffff;
-  --ink: #18181b;
-  --body: #3f3f46;
-  --muted: #52525b;
-  --faint: #71717a;
-  --border: #e4e4e7;
-  --border-strong: #d4d4d8;
-  --accent: #2e5678;
-  --accent-strong: #234460;
-  --tag-bg: #eef2f6;
-  --tag-text: #33597e;
-  --card-hover-border: #b9cbd9;
-  --thumb-bg: #f2f5f8;
-  --thumb-border: #e2e8ee;
-  --thumb-ink: #5c7f9d;
+  --ink: #111827;
+  --body: #374151;
+  --muted: #4b5563;
+  --faint: #6b7280;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --tag-bg: #f3f4f6;
+  --tag-text: #4b5563;
+  --card-hover-border: #bfd3f2;
+  --thumb-bg: #f8fafc;
+  --thumb-border: #e8edf4;
+  --thumb-ink: #64748b;
 
-  --sans: 'Geist Variable', 'Geist Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --mono: 'Geist Mono Variable', 'Geist Mono Fallback', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   /* type scale */
@@ -72,6 +74,7 @@ body {
   font-family: var(--sans);
   font-size: var(--text-body);
   line-height: 1.65;
+  letter-spacing: -0.011em; /* Inter's recommended tracking at this size */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -102,7 +105,7 @@ button {
 }
 
 ::selection {
-  background: #d7e2ec;
+  background: #dbeafe;
   color: var(--ink);
 }
 
@@ -211,7 +214,7 @@ button {
 .card:hover,
 .card:focus-within {
   border-color: var(--card-hover-border);
-  box-shadow: 0 1px 3px rgb(24 24 27 / 0.05);
+  box-shadow: 0 2px 8px rgb(17 24 39 / 0.06);
 }
 
 .card:hover .card-title-link,

@@ -3,10 +3,27 @@ export interface Project {
   description: string;
   tags: string[];
   /** key into the ProjectThumb SVG set */
-  thumb: 'search' | 'os' | 'quantum' | 'cnote';
+  thumb: 'wispr' | 'guitar' | 'search' | 'os' | 'quantum' | 'cnote';
+  url?: string;
 }
 
 export const projects: Project[] = [
+  {
+    title: 'WisprFree',
+    description:
+      'A privacy-first voice-dictation tool that runs entirely offline — Whisper transcription cleaned up by a local LLM, with a personal dictionary, per-app tone profiles, and LoRA fine-tuning on your own corrections.',
+    tags: ['Python', 'Whisper', 'Local LLMs', 'Electron'],
+    thumb: 'wispr',
+    url: 'https://github.com/hberker/WisprFree',
+  },
+  {
+    title: 'Guitar Trainer',
+    description:
+      'A dependency-free fretboard trainer that listens through the mic: autocorrelation pitch detection accurate to ~1 cent, a Karplus-Strong synth, and six practice modes with rhythm scoring.',
+    tags: ['JavaScript', 'Web Audio', 'DSP'],
+    thumb: 'guitar',
+    url: 'https://github.com/hberker/guitar-app',
+  },
   {
     title: 'Distributed Search Engine',
     description:
@@ -32,7 +49,8 @@ export const projects: Project[] = [
     title: 'C-Note',
     description:
       'An augmented-reality app that teaches music students sound design through physical puzzle pieces — turning abstract audio concepts into hands-on play.',
-    tags: ['AR', 'Audio', 'Education'],
+    tags: ['Unity', 'C#', 'AR'],
     thumb: 'cnote',
+    url: 'https://github.com/Jableman19/CNote',
   },
 ];

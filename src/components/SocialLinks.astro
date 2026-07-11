@@ -54,6 +54,9 @@ const links = [
   .social a {
     display: block;
     color: var(--muted);
+    /* expand the tap target to ~40px without changing the visual */
+    padding: 10px;
+    margin: -10px;
     transition: color 0.15s var(--ease), transform 0.15s var(--ease);
   }
 

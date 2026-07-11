@@ -14,10 +14,7 @@ const sections = [
   { id: 'projects', label: 'Projects' },
 ];
 
-const routes = [
-  { label: 'Writing', href: withBase('/writing/') },
-  { label: 'Film', href: withBase('/film/') },
-];
+const routes = [{ label: 'Film', href: withBase('/film/') }];
 ---
 
 <Base>
@@ -130,7 +127,16 @@ const routes = [
               <li class="card">
                 <ProjectThumb kind={project.thumb} />
                 <div>
-                  <h3>{project.title}</h3>
+                  <h3>
+                    {project.url ? (
+                      <a class="card-title-link" href={project.url} target="_blank" rel="noopener noreferrer">
+                        {project.title}<span class="ext" aria-hidden="true">&#8599;</span>
+                        <span class="sr-only">(opens GitHub repository in a new tab)</span>
+                      </a>
+                    ) : (
+                      <span>{project.title}</span>
+                    )}
+                  </h3>
                   <p class="card-desc">{project.description}</p>
                   <Tags tags={project.tags} />
                 </div>
@@ -142,7 +148,7 @@ const routes = [
 
       <footer class="colophon">
         <p class="mono-meta">
-          Designed &amp; built by {site.name} · Astro + GitHub Pages · Typeset in Geist
+          Designed &amp; built by {site.name} · Astro + GitHub Pages · Typeset in Inter
         </p>
       </footer>
     </main>
@@ -274,6 +280,9 @@ const routes = [
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--faint);
+    padding: 13px 8px;
+    margin: -13px -8px;
+    align-self: flex-start;
     transition: color 0.18s var(--ease);
   }
 

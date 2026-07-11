@@ -13,7 +13,6 @@ JavaScript shipped is a scroll-spy on the homepage and the film-page lightbox.
 | Page       | Route       | Source                                        |
 | ---------- | ----------- | --------------------------------------------- |
 | Home       | `/`         | `src/pages/index.astro` — About → Experience → Projects as one scrolling page |
-| Writing    | `/writing/` | `src/pages/writing/` + markdown in `src/content/writing/` |
 | Film       | `/film/`    | `src/pages/film.astro` — auto-built from images in `src/photos/` |
 
 ## Updating content
@@ -21,8 +20,6 @@ JavaScript shipped is a scroll-spy on the homepage and the film-page lightbox.
 - **Intro / contact** — `src/data/site.ts`
 - **Experience & education** — `src/data/experience.ts` (date, role, 2–3 sentence description, tags)
 - **Projects** — `src/data/projects.ts`
-- **Writing** — add a markdown file to `src/content/writing/` with `title`,
-  `description`, and `date` frontmatter. Set `draft: true` to hide a post.
 - **Photos** — drop image files into `src/photos/` (see
   [`src/photos/README.md`](src/photos/README.md)). The current images are
   generated placeholders; delete them when real photos land.
@@ -58,8 +55,10 @@ changes**:
 | `hosniberker`       | `https://hberker.github.io/hosniberker/` |
 | `hberker.github.io` | `https://hberker.github.io/`             |
 
-To claim the clean root domain later, just rename the repository to
-`hberker.github.io` and re-run the deploy workflow.
+To claim the clean root domain later, rename the repository to
+`hberker.github.io` and re-run the deploy workflow. **Note:** a repo named
+`hberker.github.io` already exists on this account (an older personal
+site) — it must be renamed or deleted first.
 
 ## Design
 
