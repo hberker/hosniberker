@@ -1,0 +1,378 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import Tags from '../components/Tags.astro';
+import ProjectThumb from '../components/ProjectThumb.astro';
+import { site } from '../data/site';
+import { experience, education } from '../data/experience';
+import { projects } from '../data/projects';
+import { withBase } from '../lib/url';
+
+const sections = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+];
+
+const routes = [{ label: 'Film', href: withBase('/film/') }];
+---
+
+<Base>
+  <div class="frame">
+    <header class="side">
+      <div class="side-top">
+        <h1 class="name">{site.name}</h1>
+        <p class="role">{site.role}</p>
+        <p class="tagline">{site.tagline}</p>
+
+        <nav class="anchors" aria-label="Sections">
+          {
+            sections.map(({ id, label }, i) => (
+              <a href={`#${id}`} class:list={[{ active: i === 0 }]} data-anchor={id}>
+                <span class="ind" />
+                <span>{label}</span>
+              </a>
+            ))
+          }
+        </nav>
+
+        <nav class="routes" aria-label="Pages">
+          {
+            routes.map(({ label, href }) => (
+              <a href={href}>
+                {label} <span class="arr" aria-hidden="true">&rarr;</span>
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+
+      <div class="side-bottom">
+        <SocialLinks />
+        <p class="mono-meta loc">{site.location}</p>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="about" aria-labelledby="about-title">
+        <h2 class="overline" id="about-title">About</h2>
+        <p>
+          I’m a software engineer at <a
+            class="ilink"
+            href="https://www.bloomberg.com/company/"
+            target="_blank"
+            rel="noopener noreferrer">Bloomberg</a
+          >, where I work on the market-data infrastructure behind derivatives pricing — snapshot
+          systems that trading, risk, and valuation teams depend on for consistent, reproducible
+          numbers. I care about the unglamorous parts of performance work: measuring first, caching
+          deliberately, and deleting more code than I add.
+        </p>
+        <p>
+          Lately that work has been pulling me toward AI — I’m moving into Bloomberg’s AI org, and
+          long-term I’m drawn to AI-safety and interpretability research, with grad school on the
+          horizon.
+        </p>
+        <p>
+          Away from a terminal I’m usually out with a camera — some of what I shoot ends up on
+          the <a class="ilink" href={withBase('/film/')}>film</a> page.
+        </p>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title">
+        <h2 class="overline" id="experience-title">Experience</h2>
+        <ol class="cards">
+          {
+            experience.map((job) => (
+              <li class="card">
+                <p class="meta mono-meta">{job.meta}</p>
+                <div>
+                  <h3>
+                    {job.url ? (
+                      <a class="card-title-link" href={job.url} target="_blank" rel="noopener noreferrer">
+                        {job.title} · {job.org}<span class="ext" aria-hidden="true">&#8599;</span>
+                        <span class="sr-only">(opens {job.org} in a new tab)</span>
+                      </a>
+                    ) : (
+                      <span>
+                        {job.title} · {job.org}
+                      </span>
+                    )}
+                  </h3>
+                  <p class="card-desc">{job.description}</p>
+                  <Tags tags={job.tags} />
+                </div>
+              </li>
+            ))
+          }
+          <li class="card">
+            <p class="meta mono-meta">{education.meta}</p>
+            <div>
+              <h3>
+                <a class="card-title-link" href={education.url} target="_blank" rel="noopener noreferrer">
+                  {education.title} · {education.org}<span class="ext" aria-hidden="true">&#8599;</span>
+                  <span class="sr-only">(opens {education.org} in a new tab)</span>
+                </a>
+              </h3>
+              <p class="card-desc">{education.description}</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 class="overline" id="projects-title">Projects</h2>
+        <ol class="cards">
+          {
+            projects.map((project) => (
+              <li class="card">
+                <ProjectThumb kind={project.thumb} />
+                <div>
+                  <h3>
+                    {project.url ? (
+                      <a class="card-title-link" href={project.url} target="_blank" rel="noopener noreferrer">
+                        {project.title}<span class="ext" aria-hidden="true">&#8599;</span>
+                        <span class="sr-only">(opens GitHub repository in a new tab)</span>
+                      </a>
+                    ) : (
+                      <span>{project.title}</span>
+                    )}
+                  </h3>
+                  <p class="card-desc">{project.description}</p>
+                  <Tags tags={project.tags} />
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <footer class="colophon">
+        <p class="mono-meta">
+          Designed &amp; built by {site.name} · Astro + GitHub Pages · Typeset in Inter
+        </p>
+      </footer>
+    </main>
+  </div>
+</Base>
+
+<script>
+  // Scroll-spy: highlight the sidebar anchor of the section in view.
+  const anchors = [...document.querySelectorAll<HTMLAnchorElement>('[data-anchor]')];
+  const sections = anchors
+    .map((a) => document.getElementById(a.dataset.anchor!))
+    .filter((s): s is HTMLElement => s !== null);
+
+  const setActive = (id: string) => {
+    for (const a of anchors) {
+      const on = a.dataset.anchor === id;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    }
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      }
+    },
+    { rootMargin: '-30% 0px -60% 0px' }
+  );
+
+  for (const section of sections) observer.observe(section);
+</script>
+
+<style>
+  .frame {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 5.5rem 3.5rem;
+    display: grid;
+    grid-template-columns: minmax(320px, 5fr) 7fr;
+    gap: 6rem;
+  }
+
+  /* ------------------------------------------------------------- sidebar */
+  .side {
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+    height: calc(100vh - 11rem);
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .name {
+    font-size: var(--text-name);
+    font-weight: 640;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+  }
+
+  .role {
+    margin-top: 0.85rem;
+    font-size: 1rem;
+    font-weight: 520;
+  }
+
+  .tagline {
+    margin-top: 0.6rem;
+    max-width: 34ch;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .anchors {
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .anchors a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    transition: color 0.18s var(--ease);
+  }
+
+  .anchors .ind {
+    height: 1px;
+    width: 20px;
+    background: var(--faint);
+    transition:
+      width 0.18s var(--ease),
+      background 0.18s var(--ease);
+  }
+
+  .anchors a:hover,
+  .anchors a.active {
+    color: var(--ink);
+  }
+
+  .anchors a:hover .ind,
+  .anchors a.active .ind {
+    width: 44px;
+    background: var(--accent);
+  }
+
+  .routes {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 220px;
+  }
+
+  .routes a {
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 13px 8px;
+    margin: -13px -8px;
+    align-self: flex-start;
+    transition: color 0.18s var(--ease);
+  }
+
+  .routes a:hover {
+    color: var(--accent);
+  }
+
+  .routes .arr {
+    opacity: 0.7;
+    margin-left: 2px;
+  }
+
+  .side-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  /* ---------------------------------------------------------------- main */
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 5.5rem;
+    min-width: 0;
+  }
+
+  section .overline {
+    margin-bottom: 1.6rem;
+  }
+
+  #about p {
+    max-width: 62ch;
+    color: var(--body);
+  }
+
+  #about p + p {
+    margin-top: 1rem;
+  }
+
+  .colophon {
+    padding-top: 0.5rem;
+  }
+
+  .colophon .mono-meta {
+    text-transform: none;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------------------------------------------------------- responsive */
+  @media (max-width: 1023px) {
+    .frame {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      padding: 3.5rem 2.25rem 4rem;
+    }
+
+    .side {
+      position: static;
+      height: auto;
+      min-height: 0;
+      display: block;
+    }
+
+    .anchors {
+      display: none;
+    }
+
+    .routes {
+      margin-top: 1.6rem;
+      padding-top: 1.4rem;
+      flex-direction: row;
+      gap: 1.75rem;
+      max-width: none;
+    }
+
+    .side-bottom {
+      margin-top: 1.6rem;
+      justify-content: flex-start;
+      gap: 1.5rem;
+    }
+
+    main {
+      gap: 4rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .frame {
+      padding: 2.5rem 1.4rem 3rem;
+    }
+  }
+</style>
