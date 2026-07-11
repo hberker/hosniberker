@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Writeup from '../../layouts/Writeup.astro';
+import sessionShot from '../../images/guitar/session.png';
+import earShot from '../../images/guitar/ear-training.png';
 
 const links = [{ label: 'GitHub', href: 'https://github.com/hberker/guitar-app' }];
 ---
@@ -18,6 +21,19 @@ const links = [{ label: 'GitHub', href: 'https://github.com/hberker/guitar-app' 
     frameworks, no libraries, no server.
   </p>
 
+  <figure>
+    <Image
+      src={sessionShot}
+      widths={[480, 720, 1080, 1440]}
+      sizes="(max-width: 720px) 94vw, 656px"
+      alt="A single-notes drill in progress: the app asks for D♯3 on the A string, with a live cents meter and signal bar below, and session stats underneath"
+      format="webp"
+    />
+    <figcaption>
+      A single-notes drill — the prompt, the live cents meter, and the clock already running.
+    </figcaption>
+  </figure>
+
   <h2>The listening part</h2>
   <ul>
     <li>
@@ -31,6 +47,20 @@ const links = [{ label: 'GitHub', href: 'https://github.com/hberker/guitar-app' 
       beep. It also self-mutes while playing so it doesn't detect its own output.
     </li>
   </ul>
+
+  <figure>
+    <Image
+      src={earShot}
+      widths={[480, 720, 1080, 1440]}
+      sizes="(max-width: 720px) 94vw, 656px"
+      alt="Ear-training mode showing a mystery-note prompt on the low E string, plus the settings panel: fret range, difficulty tiers, metronome with auto-ramp, and per-string and per-scale practice toggles"
+      format="webp"
+    />
+    <figcaption>
+      Ear training's mystery note, and the settings that shape every drill — fret range,
+      difficulty, metronome auto-ramp, strings and scales.
+    </figcaption>
+  </figure>
 
   <h2>Six practice modes</h2>
   <ul>
