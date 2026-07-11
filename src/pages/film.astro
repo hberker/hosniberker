@@ -384,8 +384,8 @@ const frameNo = (i: number) => String(i + 1).padStart(2, '0');
     transform: translate(-50%, -50%);
     background: radial-gradient(
       closest-side,
-      rgba(250, 250, 250, 0.14),
-      rgba(250, 250, 250, 0.04) 55%,
+      rgba(250, 250, 250, 0.2),
+      rgba(250, 250, 250, 0.05) 55%,
       transparent
     );
     pointer-events: none;
@@ -411,19 +411,25 @@ const frameNo = (i: number) => String(i + 1).padStart(2, '0');
     transform: translateX(
       calc(50vw - (var(--i, 0) + 0.5) * (var(--cell-w) + var(--gap)) - var(--gap) / 2)
     );
-    transition: transform 0.55s var(--ease);
+    /* a slow mechanical pull, like the tape being wound to the next frame */
+    transition: transform 0.9s cubic-bezier(0.66, 0, 0.22, 1);
     will-change: transform;
   }
 
+  /* off-table frames stay unlit film; the current one is illuminated */
   .cell {
     flex: 0 0 var(--cell-w);
     position: relative;
-    opacity: 0.28;
-    transition: opacity 0.45s var(--ease);
+    filter: brightness(0.28) saturate(0.75);
+    transition: filter 0.6s var(--ease);
   }
 
   .cell.current {
-    opacity: 1;
+    filter: none;
+  }
+
+  .cell.current .cell-btn {
+    box-shadow: 0 0 90px 14px rgba(250, 250, 250, 0.09);
   }
 
   .cell-btn {
