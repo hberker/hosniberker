@@ -15,12 +15,13 @@ const ROOT = new URL('..', import.meta.url).pathname;
 const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:'Inter Variable';src:url('/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');font-weight:100 900}
 @font-face{font-family:'Geist Mono Variable';src:url('/node_modules/@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2') format('woff2-variations');font-weight:100 900}
+@font-face{font-family:'Space Grotesk Variable';src:url('/node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2') format('woff2-variations');font-weight:300 700}
 *{margin:0;box-sizing:border-box}
 body{width:1200px;height:630px;background:#09090b;font-family:'Inter Variable',sans-serif;
   display:flex;flex-direction:column;justify-content:space-between;padding:88px 96px;position:relative;overflow:hidden}
 .rule{width:72px;height:2px;background:#60a5fa;margin-bottom:40px}
-h1{font-size:88px;font-weight:640;letter-spacing:-0.035em;color:#e4e4e7;line-height:1.02}
-.role{margin-top:26px;font-size:32px;color:#a1a1aa;font-weight:480}
+h1{font-family:'Space Grotesk Variable',sans-serif;font-size:88px;font-weight:640;letter-spacing:-0.035em;color:#e4e4e7;line-height:1.02}
+.role{margin-top:26px;font-family:'Space Grotesk Variable',sans-serif;font-size:32px;color:#a1a1aa;font-weight:480}
 .bottom{display:flex;justify-content:space-between;align-items:baseline;
   font-family:'Geist Mono Variable',monospace;font-size:20px;letter-spacing:.12em;color:#82828c;text-transform:uppercase}
 .cards{position:absolute;right:96px;top:96px;display:flex;flex-direction:column;gap:26px}

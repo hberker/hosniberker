@@ -120,3 +120,11 @@ Three additions, no theme changes:
 Verified: axe-core clean on home, film (gallery and open viewer), and
 write-up pages; auto-advance/pause/reduced-motion behaviour asserted in
 headless Chromium; no horizontal overflow at 390px.
+
+### v3.1 — display face
+
+Space Grotesk (variable, Fontsource) added as `--display` for names and
+headings only — the "monospace-esque" texture wanted from the font
+explorations, chosen over full-mono options; body stays Inter, metadata
+stays Geist Mono. Metric-adjusted Arial fallback (size-adjust 107%,
+measured) keeps CLS at zero. OG card regenerated to match.
