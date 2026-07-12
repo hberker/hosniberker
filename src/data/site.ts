@@ -8,5 +8,5 @@ export const site = {
   github: 'https://github.com/hberker',
   linkedin: 'https://www.linkedin.com/in/hberker',
   description:
-    'Hosni Berker — software engineer at Bloomberg in New York, building AI surveillance models that detect trader abuse.',
+    'Hosni Berker, software engineer at Bloomberg in New York, building AI surveillance models that detect trader abuse.',
 } as const;

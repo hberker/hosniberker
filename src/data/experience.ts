@@ -9,12 +9,12 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
-    meta: '2023 — Present',
+    meta: '2023 – Present',
     title: 'Senior Software Engineer',
     org: 'Bloomberg',
     url: 'https://www.bloomberg.com/company/',
     description:
-      'Work on AI surveillance — training, fine-tuning, and deploying models that detect trader abuse such as insider trading, excessive gifting, and collusion, along with the annotation pipelines, deattribution, and evaluation datasets behind them. Spent the first years here on the C++ snapshot systems behind derivatives pricing, including a 90% response-time cut on a service handling 2.6M requests a day.',
+      'Work on AI surveillance: training, fine-tuning, and deploying models that detect trader abuse such as insider trading, excessive gifting, and collusion, along with the annotation pipelines, deattribution, and evaluation datasets behind them. Spent the first years here on the C++ snapshot systems behind derivatives pricing, including a 90% response-time cut on a service handling 2.6M requests a day.',
     tags: ['Python', 'Fine-tuning', 'Human-in-the-loop', 'Evals', 'C++'],
   },
   {
@@ -27,12 +27,12 @@ export const experience: Experience[] = [
     tags: ['Image editing', 'ML integration', 'Design docs'],
   },
   {
-    meta: '2020 — 2022',
+    meta: '2020 – 2022',
     title: 'Software Engineer Intern',
     org: 'TechSmith',
     url: 'https://www.techsmith.com/camtasia/',
     description:
-      'Across part-time and full-time rotations, delivered 25+ features for the Camtasia video editor on Windows — including an accessibility mode enabling users with limited mouse use to navigate the app, and end-to-end video processing tools serving 70M+ users.',
+      'Across part-time and full-time rotations, delivered 25+ features for the Camtasia video editor on Windows, including an accessibility mode enabling users with limited mouse use to navigate the app, and end-to-end video processing tools serving 70M+ users.',
     tags: ['C#', 'C++', 'XAML', 'Accessibility'],
   },
   {
@@ -45,7 +45,7 @@ export const experience: Experience[] = [
     tags: ['Python', 'Data tooling'],
   },
   {
-    meta: '2019 — 2020',
+    meta: '2019 – 2020',
     title: 'Software Engineering Intern',
     org: 'Fraunhofer USA',
     url: 'https://www.fraunhofer.org',

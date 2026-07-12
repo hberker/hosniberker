@@ -42,13 +42,13 @@ const frameNo = (i: number) => String(i + 1).padStart(2, '0');
 
 <Base
   title="Film"
-  description="A photography gallery by Hosni Berker — negatives on the light table. Currently holding generated placeholder frames."
+  description="A photography gallery by Hosni Berker: negatives on the light table. Currently holding generated placeholder frames."
 >
   <TopNav current="film" />
   <main id="main" class="page">
     <h1>Film</h1>
     <p class="lede">
-      Frames from the other hobby, laid out as cut negatives — hover to develop one, click to put
+      Frames from the other hobby, laid out as cut negatives. Hover to develop one, click to put
       it on the light table. These are generated placeholders for now; real rolls are being
       scanned.
     </p>
@@ -105,7 +105,7 @@ const frameNo = (i: number) => String(i + 1).padStart(2, '0');
                 class="cell-btn"
                 type="button"
                 data-index={index}
-                aria-label={`Go to frame ${frameNo(index)} — ${label}`}
+                aria-label={`Go to frame ${frameNo(index)}, ${label}`}
               >
                 <img data-src={full} alt={label} decoding="async" />
               </button>
@@ -156,7 +156,7 @@ const frameNo = (i: number) => String(i + 1).padStart(2, '0');
     loadCell((current + 1) % cells.length);
     loadCell((current - 1 + cells.length) % cells.length);
     const label = cells[current].querySelector('img')!.alt;
-    caption.textContent = `${String(current + 1).padStart(2, '0')} / ${String(cells.length).padStart(2, '0')} — ${label}`;
+    caption.textContent = `${String(current + 1).padStart(2, '0')} / ${String(cells.length).padStart(2, '0')} · ${label}`;
   }
 
   function stopAuto() {

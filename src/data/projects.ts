@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: 'WisprFree',
     description:
-      'A privacy-first voice-dictation tool that runs entirely offline — Whisper transcription cleaned up by a local LLM, with a personal dictionary, per-app tone profiles, and LoRA fine-tuning on your own corrections.',
+      'A privacy-first voice-dictation tool that runs entirely offline: Whisper transcription cleaned up by a local LLM, with a personal dictionary, per-app tone profiles, and LoRA fine-tuning on your own corrections.',
     tags: ['Python', 'Whisper', 'Local LLMs', 'Electron'],
     thumb: 'wispr',
     url: 'https://github.com/hberker/WisprFree',
@@ -38,7 +38,7 @@ export const projects: Project[] = [
   {
     title: 'Operating System Libraries',
     description:
-      'Core OS components engineered in C++ — a thread library, a virtual-memory pager, and a multithreaded network file system.',
+      'Core OS components engineered in C++: a thread library, a virtual-memory pager, and a multithreaded network file system.',
     tags: ['C++', 'Concurrency', 'Virtual memory'],
     thumb: 'os',
   },
@@ -52,7 +52,7 @@ export const projects: Project[] = [
   {
     title: 'C-Note',
     description:
-      'An augmented-reality app that teaches music students sound design through physical puzzle pieces — turning abstract audio concepts into hands-on play.',
+      'An augmented-reality app that teaches music students sound design through physical puzzle pieces, turning abstract audio concepts into hands-on play.',
     tags: ['Unity', 'C#', 'AR'],
     thumb: 'cnote',
     url: 'https://github.com/Jableman19/CNote',
