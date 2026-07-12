@@ -6,14 +6,14 @@ const links = [{ label: 'GitHub', href: 'https://github.com/hberker/WisprFree' }
 
 <Writeup
   title="WisprFree"
-  description="A privacy-first voice-dictation tool that runs entirely offline — Whisper transcription cleaned up by a local LLM, with a personal dictionary, per-app tone profiles, and fine-tuning on your own corrections."
+  description="A privacy-first voice-dictation tool that runs entirely offline: Whisper transcription cleaned up by a local LLM, with a personal dictionary, per-app tone profiles, and fine-tuning on your own corrections."
   meta="Personal project · In active development"
   tags={['Python', 'Whisper', 'Local LLMs', 'Electron', 'FastAPI']}
   links={links}
 >
   <p>
     Every good dictation tool I tried wanted my audio in someone else's cloud. WisprFree is my
-    answer: press a hotkey anywhere in the OS, talk, and clean text appears at your cursor —
+    answer: press a hotkey anywhere in the OS, talk, and clean text appears at your cursor,
     with nothing ever leaving the machine. No accounts, no telemetry, and the API daemon binds to
     localhost only.
   </p>
@@ -31,7 +31,7 @@ const links = [{ label: 'GitHub', href: 'https://github.com/hberker/WisprFree' }
     </li>
     <li>
       <strong>Refine.</strong> A local LLM served by Ollama strips filler words, fixes grammar,
-      resolves mid-sentence self-corrections ("send it Tuesday — no, Wednesday"), and adapts tone to
+      resolves mid-sentence self-corrections ("send it Tuesday, no, Wednesday"), and adapts tone to
       the app you're dictating into.
     </li>
   </ul>
@@ -39,23 +39,23 @@ const links = [{ label: 'GitHub', href: 'https://github.com/hberker/WisprFree' }
   <h2>The parts I'm proud of</h2>
   <ul>
     <li>
-      <strong>Personal dictionary</strong> — a SQLite store of your vocabulary that biases both
+      <strong>Personal dictionary</strong>: a SQLite store of your vocabulary that biases both
       stages. When the same correction keeps happening, WisprFree notices and suggests adding the
       term.
     </li>
     <li>
-      <strong>Context awareness</strong> — it detects the active application (AppKit on macOS, Win32
+      <strong>Context awareness</strong>: it detects the active application (AppKit on macOS, Win32
       on Windows, X11/Hyprland/Sway on Linux) and switches between casual, formal, and technical
       tone profiles accordingly. Slack-you and email-you are different people.
     </li>
     <li>
-      <strong>It learns your voice</strong> — corrections are logged locally and can be used to
+      <strong>It learns your voice</strong>: corrections are logged locally and can be used to
       LoRA-fine-tune both stages: the cleanup model from your correction history, and Whisper itself
       from recordings of you reading phonetically balanced sentences, with a held-out set to report
       the actual word-error-rate improvement.
     </li>
     <li>
-      <strong>OS-native text injection</strong> — CGEvent on macOS, SendInput on Windows,
+      <strong>OS-native text injection</strong>: CGEvent on macOS, SendInput on Windows,
       xdotool/wtype on Linux, so it works in any app, not just a browser extension's sandbox.
     </li>
   </ul>

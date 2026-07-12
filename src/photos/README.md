@@ -1,6 +1,6 @@
 # Film gallery photos
 
-Every image in this folder automatically appears on the `/film` page — no code
+Every image in this folder automatically appears on the `/film` page, no code
 changes needed. Drop in `.jpg`, `.jpeg`, `.png`, `.webp`, or `.avif` files and
 rebuild.
 
@@ -17,4 +17,4 @@ rebuild.
 
 The `placeholder-*.jpg` files are generated color studies
 (`scripts/generate-placeholder-photos.mjs`). Delete them once real photos are
-in — nothing references them by name.
+in; nothing references them by name.
